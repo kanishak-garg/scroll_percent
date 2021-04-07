@@ -1,0 +1,162 @@
+<html>
+
+<head>
+    <title>scroll</title>
+    <style>
+        #header {
+            width: 90%;
+            text-align: center;
+            margin: auto;
+            text-align: justify;
+        }
+
+        #gallery {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background-color: lightgray;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+
+        #photo {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #photo img {
+            width: 400px;
+            height: 400px;
+        }
+
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        #fill {
+            position: sticky;
+            top: 10px;
+            right: 10px;
+            height: 50px;
+            width: 160px;
+            border-radius: 1.5rem;
+            background-color: red;
+            overflow: hidden;
+        }
+
+        h2 {
+            position: absolute;
+            margin: auto;
+            z-index: 2;
+            top: 10px;
+            left: 20px;
+        }
+
+        #in {
+            position: relative;
+            width: 0%;
+            height: 100%;
+            background-color: blue;
+            /* border-radius: 1.5rem; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fill">
+        <h2 id="per">0%</h2>
+        <div id="in">
+        </div>
+    </div>
+    <section id="header">
+        <h1>image gallery</h1>
+        <p>Velit sit irure velit quis ex mollit est laborum qui cupidatat nulla eu eiusmod. Deserunt sint irure dolor
+            excepteur aliquip minim consectetur Lorem. Duis mollit esse nisi qui laborum sit sit aute Lorem ea fugiat
+            consequat laborum. Et ad duis officia in consectetur non culpa dolor do pariatur ea minim ullamco duis. Enim
+            duis proident elit commodo tempor in dolor qui.
+            Aliqua amet laborum occaecat nisi esse laboris adipisicing aliqua nulla. Adipisicing magna eiusmod
+            adipisicing esse et est voluptate consequat esse qui nisi. Nostrud ut id velit aliqua labore tempor enim est
+            deserunt esse Lorem esse proident. Aliquip nostrud reprehenderit reprehenderit nostrud nostrud.
+
+            Deserunt duis ipsum cupidatat nisi nostrud in ullamco non ea mollit est exercitation mollit. Deserunt
+            eiusmod aliquip laborum esse esse proident veniam. Qui commodo excepteur sunt nisi qui ea irure id commodo
+            deserunt voluptate proident ad minim. Ipsum commodo deserunt magna id magna mollit nulla dolor culpa non
+            adipisicing. Lorem Lorem incididunt id cupidatat minim nisi tempor. Velit proident dolor nostrud sunt
+            commodo anim cupidatat ex irure fugiat.
+        </p>
+    </section>
+    <section id="gallery">
+        <div id="head">
+            <h1>Gallery</h1>
+
+        </div>
+        <div id="photo">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+            <img src="../img/port2.png" alt="image">
+        </div>
+    </section>
+
+    <script>
+        var box = document.getElementById('photo');
+        var t = document.getElementById('t');
+        var bar = document.getElementById('in');
+        var height = box.offsetHeight;
+        var cord = box.getBoundingClientRect();
+        var top = cord.top;
+        var per = document.getElementById('per');
+        window.addEventListener('resize', function () {
+            height = box.offsetHeight;
+        });
+        window.addEventListener('scroll', function () {
+            var cord = box.getBoundingClientRect();
+            var top = cord.top;
+            var wind = document.body.getBoundingClientRect();
+            var win = wind.top;
+            console.log(win);
+            var percent;
+            if (top < 0) {
+                percent = (top * -1) + window.innerHeight;
+            } else {
+                percent = window.innerHeight - top;
+            }
+            percent /= height;
+            percent *= 100;
+            percent = parseInt(percent);
+            if (percent > 0) {
+                per.innerHTML = percent + "%";
+                bar.style.width = percent + "%";
+            }
+        });
+    </script>
+</body>
+
+</html>
